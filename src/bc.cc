@@ -68,8 +68,9 @@ void PBFS(const Graph &g, NodeID source, pvector<CountT> &path_counts,
       for (auto q_iter = queue.begin(); q_iter < queue.end(); q_iter++) {
         NodeID u = *q_iter;
         for (NodeID &v : g.out_neigh(u)) {
-          if ((depths[v] == -1) &&
-              (compare_and_swap(depths[v], static_cast<NodeID>(-1), depth))) {
+          NodeID null_node = -1;
+          if ((depths[v] == null_node) &&
+              (compare_and_swap(depths[v], null_node, depth))) {
             lqueue.push_back(v);
           }
           if (depths[v] == depth) {

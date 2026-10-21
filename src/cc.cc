@@ -49,7 +49,7 @@ void Link(NodeID u, NodeID v, pvector<NodeID>& comp) {
     if ((p_high == low) ||
         (p_high == high && compare_and_swap(comp[high], high, low)))
       break;
-    p1 = comp[comp[high]];
+    p1 = comp[p_high];
     p2 = comp[low];
   }
 }

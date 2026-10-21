@@ -79,7 +79,6 @@ void RelaxEdges(const WGraph &g, NodeID u, WeightT delta,
         local_bins[dest_bin].push_back(wn.v);
         break;
       }
-      old_dist = dist[wn.v];      // swap failed, recheck dist update & retry
     }
   }
 }
