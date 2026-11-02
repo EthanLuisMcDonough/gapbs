@@ -41,9 +41,8 @@ class Bitmap {
   }
 
   void set_bit_atomic(size_t pos) {
-    uint64_t old_val, new_val;
+    uint64_t old_val = start_[word_offset(pos)], new_val;
     do {
-      old_val = start_[word_offset(pos)];
       new_val = old_val | ((uint64_t) 1l << bit_offset(pos));
     } while (!compare_and_swap(start_[word_offset(pos)], old_val, new_val));
   }

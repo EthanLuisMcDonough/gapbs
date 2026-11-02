@@ -81,7 +81,6 @@ pvector<WeightT> DeltaStep(const WGraph &g, NodeID source, WeightT delta) {
             if (new_dist < old_dist) {
               bool changed_dist = true;
               while (!compare_and_swap(dist[wn.v], old_dist, new_dist)) {
-                old_dist = dist[wn.v];
                 if (old_dist <= new_dist) {
                   changed_dist = false;
                   break;
